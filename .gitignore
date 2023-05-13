@@ -1,4 +1,2 @@
-**/__pycache__
 *.pyc
-
-__pycache__/
+backend/language/__pycache__
