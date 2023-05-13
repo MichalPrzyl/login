@@ -1,18 +1,32 @@
 .app{
-    width: fit-content;
-    margin: 50px auto;
+    /* width: fit-content; */
+    /* margin: 50px auto; */
     padding: 20px;
     /* border: 1px solid black; */
     box-shadow: 0 0 10px 2px black;
 }
 
-.send-btn{
+.btn{
     width: fit-content;
     box-shadow: 0 0 10px 2px black;
     padding: 10px;
     border-radius: 15px;
+    margin-bottom: 50px;
+    margin-top: 10px;
+}
+
+.send-btn{
+   
 }
 
 .send-btn:hover{
+    cursor: pointer;
+}
+
+.rmv-btn{
+    background: rgb(255, 113, 113);
+}
+
+.rmv-btn:hover{
     cursor: pointer;
 }

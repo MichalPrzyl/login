@@ -40,7 +40,7 @@ const CreateRecord = () => {
                 onChange={handleChangeName}
             ></input>
         </div>
-        <div className='send-btn' onClick={send}>Stwórz</div>
+        <div className='send-btn btn' onClick={send}>Stwórz</div>
     </div>
 }
 export default CreateRecord;
