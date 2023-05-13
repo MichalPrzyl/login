@@ -5,7 +5,7 @@ from language.serializers import LanguageSerializer
 from rest_framework.permissions import IsAuthenticated
 
 
-class LanguageGenericAPI(generics.CreateAPIView, generics.ListAPIView, generics.RetrieveAPIView):
+class LanguageGenericAPI(generics.CreateAPIView, generics.ListAPIView, generics.RetrieveAPIView, generics.DestroyAPIView):
     queryset = Language.objects
     serializer_class = LanguageSerializer
     permission_classes = [IsAuthenticated]
@@ -20,3 +20,6 @@ class LanguageGenericAPI(generics.CreateAPIView, generics.ListAPIView, generics.
         request.data.update({"user": request.user.id})
 
         return Response(self.create(request).data)
+
+    def delete(self, request, pk, *args, **kwargs):
+        return super().delete(request, pk *args, **kwargs)

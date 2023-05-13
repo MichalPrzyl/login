@@ -20,6 +20,7 @@ const Access = () => {
     const [data, setData] = useState([] as any)
     const [token, setToken] = useState("")
     const [loggedUsername, setLoggedUsername] = useState('');
+    const [loginError, setLoginError] = useState("");
 
     useEffect(() => {
         checkIfLogin();
@@ -96,8 +97,6 @@ const Access = () => {
 
     return (
         <div className='app'>
-
-
             <LoginForm
                 logged={logged}
                 credentials={credentials}
@@ -106,21 +105,22 @@ const Access = () => {
                 getToken={getToken}
                 loggedUsername={loggedUsername}
                 logout={logout}
+                getData={getData}
             />
-
-
             {logged &&
-                <Button onClick={getData}>Pobierz dane</    Button>
+                <div className='display-data-container mt-5'>
+                    <CreateRecord
+                        getData={getData}
+                    />
+                    <div className='mt-5'>Dane:</div>
+                    <div>
+                        <DisplayData
+                            data={data}
+                            getData={getData}
+                        />
+                    </div>
+                </div>
             }
-            <div>Dane:</div>
-            <div>
-                <DisplayData data={data} />
-
-            </div>
-
-
-
-            <CreateRecord />
         </div>
     )
 }

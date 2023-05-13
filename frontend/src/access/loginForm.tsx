@@ -2,10 +2,10 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 const LoginForm = (props: any) => {
-    const {logged, credentials, handleChangeusername, handleChangePassword,
-        getToken, loggedUsername, logout} = props;
+    const { logged, credentials, handleChangeusername, handleChangePassword,
+        getToken, loggedUsername, logout } = props;
 
-    return (<>
+    return (<div className="login-form p-2">
         {!logged ?
             <>
                 <Form.Label htmlFor="inputPassword5">Username</Form.Label>
@@ -29,7 +29,7 @@ const LoginForm = (props: any) => {
                 <Button onClick={logout}>Wyloguj</Button>
             </>
         }
-        </>
+    </div>
     )
 }
 
