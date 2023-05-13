@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 
 const LoginForm = (props: any) => {
     const { logged, credentials, handleChangeusername, handleChangePassword,
-        getToken, loggedUsername, logout } = props;
+        getToken, loggedUsername, logout, loginError, setLoginError } = props;
 
     return (<div className="login-form p-2">
         {!logged ?
@@ -22,7 +22,10 @@ const LoginForm = (props: any) => {
                     value={credentials.password || ''}
                     onChange={handleChangePassword}
                 />
-                <Button onClick={getToken}>Zaloguj</Button>
+                <div className='login-errors'>
+                    {loginError}
+                </div>
+                <Button className='mt-2' onClick={getToken}>Zaloguj</Button>
             </>
             : <>
                 <div>zalogowane jako: {loggedUsername}</div>

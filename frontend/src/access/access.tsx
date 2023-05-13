@@ -56,6 +56,7 @@ const Access = () => {
             password: credentials.password
         }
         try {
+            setLoginError("")
             cleanCredentialInputs();
             const response = await axios.post(url, sendState)
             const token = response.data.access
@@ -67,7 +68,9 @@ const Access = () => {
             setToken(token);
             getData();
         }
-        catch { }
+        catch {
+            setLoginError("Błędne dane logowania.")
+        }
 
     }
 
@@ -106,6 +109,8 @@ const Access = () => {
                 loggedUsername={loggedUsername}
                 logout={logout}
                 getData={getData}
+                loginError={loginError}
+                setLoginError={setLoginError}
             />
             {logged &&
                 <div className='display-data-container mt-5'>
