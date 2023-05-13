@@ -1,3 +1,6 @@
 *.pyc
 backend/language/__pycache__
 backend/venv
+frontend/package-lock.json
+frontend/package.json
+frontend/node_modules/

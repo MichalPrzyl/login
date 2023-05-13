@@ -4,6 +4,7 @@ import './App.css';
 
 import Access from './access/access';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {

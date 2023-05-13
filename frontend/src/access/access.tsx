@@ -5,7 +5,9 @@ import CreateRecord from './createNew';
 import hasJWT, { setAuthToken } from './token';
 import './style.css'
 import DisplayData from '../data/DisplayData';
-
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import LoginForm from './loginForm';
 
 interface ICredentials {
     username: string;
@@ -17,6 +19,7 @@ const Access = () => {
     const [logged, setLogged] = useState(false);
     const [data, setData] = useState([] as any)
     const [token, setToken] = useState("")
+    const [loggedUsername, setLoggedUsername] = useState('');
 
     useEffect(() => {
         checkIfLogin();
@@ -41,6 +44,7 @@ const Access = () => {
         }
     }
     const cleanCredentialInputs = () => {
+        setLoggedUsername(credentials.username);
         setCredentials({ username: '', password: '' })
     }
     const getToken = async () => {
@@ -92,36 +96,30 @@ const Access = () => {
 
     return (
         <div className='app'>
-            {!logged ?
-                <>
-                    username:
-                    <input
-                        type="text"
-                        value={credentials.username || ''}
-                        onChange={handleChangeusername}
-                    ></input>
-                    <br></br>
-                    Password:
-                    <input
-                        type="password"
-                        value={credentials.password || ''}
-                        onChange={handleChangePassword}
-                    ></input>
-                    <br></br>
 
-                    <button onClick={getToken}>Zaloguj</button>
-                    <br></br>
-                </>
-                : null}
 
-            {logged ? <div>zalogowane</div> : <div>nie zalogowano</div>}
-            <button onClick={logout}>Wyloguj</button>
-            <button onClick={getData}>Pobierz dane</button>
+            <LoginForm
+                logged={logged}
+                credentials={credentials}
+                handleChangeusername={handleChangeusername}
+                handleChangePassword={handleChangePassword}
+                getToken={getToken}
+                loggedUsername={loggedUsername}
+                logout={logout}
+            />
+
+
+            {logged &&
+                <Button onClick={getData}>Pobierz dane</    Button>
+            }
             <div>Dane:</div>
             <div>
                 <DisplayData data={data} />
 
             </div>
+
+
+
             <CreateRecord />
         </div>
     )
