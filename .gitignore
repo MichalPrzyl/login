@@ -1,2 +1,3 @@
 *.pyc
 backend/language/__pycache__
+backend/venv
